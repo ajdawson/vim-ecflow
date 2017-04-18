@@ -19,6 +19,9 @@ endif
 " Include all syntax files for sh before defining extra syntax:
 " ----------------------------------------------------------------------
 runtime! syntax/sh.vim syntax/sh/*.vim
+if exists("b:current_syntax")
+    unlet b:current_syntax
+endif
 
 " ----------------------------------------------------------------------
 " Define a syntax group containing all top-level ecFlow syntax except
@@ -79,34 +82,25 @@ highlight link ecfMicroChar String
 " ----------------------------------------------------------------------
 " Highlight plain shell script inside a "%nopp" directive block:
 " ----------------------------------------------------------------------
-if exists("b:current_syntax")
-    " Record the b:current_syntax variable before un-letting it:
-    let s:current_syntax = b:current_syntax
-    unlet b:current_syntax
-endif
 " Refer to the syntax sh-hack.vim as @Sh, we use sh-hack.vim instead of
-" sh.vim because we have added implicit "contains=ecfVariable" to the
-" sh.vim syntax for shDoubleQuote and shSingleQuote, but we don't want
-" that to apply within the "%nopp" directive:
-syntax include @ShHack syntax/sh-hack.vim
+" sh.vim because we have added implicit contains=ecfVariable to the
+" sh.vim syntax but we don't want that to apply within the %nopp
+" directive:
 try
-    " Also attempt to load any user-specified extensions to sh.vim into
-    " the @Sh syntax:
-    syntax include @ShHack after/syntax/sh.vim
+    syntax include @ShHack syntax/sh-hack.vim
+    try
+        " Also attempt to load any user-specified extensions to sh.vim into
+        " the @Sh syntax:
+        syntax include @ShHack after/syntax/sh.vim
+    catch
+    endtry
+    " Define the "%nopp" directive region, and highlight anything in it as
+    " normal sh.vim would, and give the directive itself the constant color
+    " (inidcative that variables within are actually constants):
+    syntax region ecfNoppBlock matchgroup=ecfNopp start='\v^\%nopp\s*$' end='\v^\%end\s*$' contains=@ShHack
 catch
+    echoerr "failed to load sh-hack.vim, did you forget to run the build_syntax script?"
 endtry
-if exists("s:current_syntax")
-    " Reset the b:current_syntax to whatever it was before we unset it:
-    let b:current_syntax = s:current_syntax
-else
-    " Ensure b:current syntax remains unset as it was before we started
-    " (it may become set when loading syntax):
-    unlet b:current_syntax
-endif
-" Define the "%nopp" directive region, and highlight anything in it as
-" normal sh.vim would, and give the directive itself the constant color
-" (inidcative that variables within are actually constants):
-syntax region ecfNoppBlock matchgroup=ecfNopp start='\v^\%nopp\s*$' end='\v^\%end\s*$' contains=@ShHack
 highlight link ecfNopp Constant
 
 " ----------------------------------------------------------------------
