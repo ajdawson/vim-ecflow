@@ -39,9 +39,9 @@ highlight link ecfVariable Underlined
 " ----------------------------------------------------------------------
 " Handle the ecFlow "%include" directive:
 " ----------------------------------------------------------------------
-syntax match  ecfInclude '\v^\%include '     nextgroup=ecfIncludeRaw,ecfIncludeString,ecfIncludeAngle
-syntax match  ecfInclude '\v^\%includeonce ' nextgroup=ecfIncludeRaw,ecfIncludeString,ecfIncludeAngle
-syntax match  ecfInclude '\v^\%includenopp ' nextgroup=ecfIncludeRaw,ecfIncludeString,ecfIncludeAngle
+syntax match  ecfInclude '\v^\%include '     nextgroup=ecfIncludeRaw,ecfIncludeString,ecfIncludeAngle containedin=ALLBUT,@Ecf
+syntax match  ecfInclude '\v^\%includeonce ' nextgroup=ecfIncludeRaw,ecfIncludeString,ecfIncludeAngle containedin=ALLBUT,@Ecf
+syntax match  ecfInclude '\v^\%includenopp ' nextgroup=ecfIncludeRaw,ecfIncludeString,ecfIncludeAngle containedin=ALLBUT,@Ecf
 syntax match  ecfIncludeRaw '\v\S+' contained
 syntax region ecfIncludeString matchgroup=ecfIncludeText start='\V"' end='\V"' contained
 syntax region ecfIncludeAngle  matchgroup=ecfIncludeBrackets start="\V<" end="\V>" contained
