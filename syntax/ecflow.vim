@@ -33,7 +33,7 @@ syntax cluster Ecf contains=ecfInclude,ecfNoppBlock,ecfComment,ecfManual,ecfMicr
 " Highlight ecFlow variables, they can be contained within any shell
 " script syntax, but not within other ecFlow syntax:
 " ----------------------------------------------------------------------
-syntax match ecfVariable '\v\%\S{-}\%' containedin=ALLBUT,@Ecf
+syntax match ecfVariable '\v\%\S{1,}\%' containedin=ALLBUT,@Ecf
 highlight link ecfVariable Underlined
 
 " ----------------------------------------------------------------------
