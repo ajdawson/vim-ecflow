@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Make a copy of the sh.vim syntax from the current Vim installation and
+# modify its syntax identifier names. The modified syntax is used to
+# highlight blocks of plain shell script within ecFlow syntax, which is
+# itself simply a layer on top of the shell script syntax.
+#
+
+# Get the vim runtime directory:
+VIMRUNTIME=$(vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>" | echo $VIMRUNTIME | quit' \
+                                  | tr -d '\015')
+
+# Make a hacked copy of the sh syntax file, used to embed normal sh syntax within
+# blocks of the extended sh syntax:
+sh_syntax_file="$VIMRUNTIME/syntax/sh.vim"
+hack_syntax_file="./syntax/sh-hack.vim"
+if [[ -f $sh_syntax_file ]]; then
+    sed -e 's/sh\([A-Z]\)/shHack\1/g' \
+        -e 's/ShFold/ShHackFold/g' \
+        "$sh_syntax_file" > "$hack_syntax_file"
+else
+    echo "error: cannot locate sh.vim in \$VIMRUNTIME: $VIMRUNTIME" 1>&2
+    exit 1
+fi
+
+exit 0
+
