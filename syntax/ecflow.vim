@@ -54,7 +54,7 @@ highlight link ecfInclude         Include
 " ----------------------------------------------------------------------
 " Handle the "%comment" directive:
 " ----------------------------------------------------------------------
-syntax region ecfComment start='\v^\%comment\s*$' end='\v^\%end\s*$'
+syntax region ecfComment start='\v^\%comment\s*$' end='\v^\%end\s*$' containedin=ALLBUT,@Ecf
 highlight link ecfComment Comment
 
 " ----------------------------------------------------------------------
