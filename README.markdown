@@ -19,5 +19,5 @@ I highly recommend using pathogen to install:
 You will need to run the ``./build_syntax`` script before the package can be
 used:
 
-    cd vim-ecflow-syntax
+    cd vim-ecflow
     ./build_syntax
