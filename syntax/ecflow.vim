@@ -74,7 +74,7 @@ highlight link ecfManual SpecialComment
 "syntax match ecfMicro '\v^\%ecfmicro +\S'
 "highlight link ecfMicro Macro
 
-syntax match ecfMicro '\v^\%ecfmicro' nextgroup=ecfMicroChar
+syntax match ecfMicro '\v^\%ecfmicro' nextgroup=ecfMicroChar containedin=ALLBUT,@Ecf
 syntax match ecfMicroChar '\v\s+\S' contained
 highlight link ecfMicro Macro
 highlight link ecfMicroChar String
