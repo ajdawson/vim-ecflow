@@ -60,7 +60,7 @@ highlight link ecfComment Comment
 " ----------------------------------------------------------------------
 " Handle the "%manual" directive:
 " ----------------------------------------------------------------------
-syntax region ecfManual start='\v^\%manual\s*$' end='\v^\%end\s*$' contains=ecfInclude
+syntax region ecfManual start='\v^\%manual\s*$' end='\v^\%end\s*$' contains=ecfInclude containedin=ALLBUT,@Ecf
 highlight link ecfManual SpecialComment
 
 " ----------------------------------------------------------------------
