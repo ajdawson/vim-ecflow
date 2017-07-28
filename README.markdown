@@ -1,4 +1,4 @@
-# Synatx highlighting for ecFlow scripts
+# Syntax highlighting for ecFlow scripts
 
 ecFlow scripts are just regular shell scripts with additional pre-processing
 directives available. This syntax highlighting package extends the built-in
@@ -11,7 +11,7 @@ pre-processing directives with ecFlow.
 # Install
 
 You must run the ``./build_syntax`` script to generate the necessary files
-for the package to work. When you do this depndes on installation method.
+for the package to work. When you do this depends on installation method.
 
 If you use [Pathogen](https://github.com/tpope/vim-pathogen) (recommended)
 do this:
