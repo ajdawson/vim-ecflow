@@ -6,18 +6,24 @@ shell script syntax to include these post-processing directives.
 
 The ecFlow syntax is automatically selected for scripts with file extension
 .ecf. It is also activated for scripts with file extension .sms, which share
-pre-processing directives with ecFlow (but this syntax definiton does not
-highlight CDP scripts within .sms files).
+pre-processing directives with ecFlow.
 
 # Install
 
-I highly recommend using pathogen to install:
+You must run the ``./build_syntax`` script to generate the necessary files
+for the package to work. When you do this depndes on installation method.
+
+If you use [Pathogen](https://github.com/tpope/vim-pathogen) (recommended)
+do this:
 
     cd ~/.vim/bundle
     git clone ssh://git@software.ecmwf.int:7999/~diad/vim-ecflow.git    
-
-You will need to run the ``./build_syntax`` script before the package can be
-used:
-
     cd vim-ecflow
     ./build_syntax
+
+If you are installing manually then do this:
+
+    git clone ssh://git@software.ecmwf.int:7999/~diad/vim-ecflow.git
+    cd vim-ecflow
+    ./build_syntax
+    rsync -a ftdetect syntax ~/.vim

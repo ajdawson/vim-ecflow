@@ -1,9 +1,8 @@
 " Vim syntax file
-" Language:	    ecFlow script (and SMS without CDP)
+" Language:	    ecFlow (and SMS) script
 " Maintainer:   Andrew Dawson <andrew.dawson@ecmwf.int>
-" Last Change:  2017-04-18
-" Remark:       A small extra layer over the sh syntax to add ecFlow
-"               directives
+" Last Change:  2017-07-28
+" Remark:       A layer over the sh syntax to add ecFlow directives
 
 " ----------------------------------------------------------------------
 " Check for "b:current_syntax". If it is defined, some other syntax file,
