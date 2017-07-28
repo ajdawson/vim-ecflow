@@ -107,35 +107,35 @@ highlight link ecfNopp Constant
 " ----------------------------------------------------------------------
 
 " An %include directive with leading space is invalid:
-syntax match ecfError '\v^\s+\%include.*'
+syntax match ecfError '\v^\s+\%include.*' containedin=ALL
 
 " A %comment directive with leading space characters or trailing
 " non-space characters is invalid:
-syntax match ecfError '\v^\s+\%comment.*'
-syntax match ecfError '\v^\%comment\s*\S+' containedin=ecfComment
+syntax match ecfError '\v^\s+\%comment.*' containedin=ALL
+syntax match ecfError '\v^\%comment\s*\S+.*' containedin=ALL
 
 " A %manual directive with leading space characters or trailing
 " non-space characters is invalid:
-syntax match ecfError '\v^\s+\%manual.*'
-syntax match ecfError '\v^\%manual\s*\S+' containedin=ecfManual
+syntax match ecfError '\v^\s+\%manual.*' containedin=ALL
+syntax match ecfError '\v^\%manual\s*\S+.*' containedin=ALL
 
 " An %ecfmicro directive with leading space or any trailing non-space
 " characters is invalid:
-syntax match ecfError '\v^\s+\%ecfmicro.*'
-syntax match ecfError '\v^\%ecfmicro\s+\S\s*\S+'
+syntax match ecfError '\v^\s+\%ecfmicro.*' containedin=ALL
+syntax match ecfError '\v^\%ecfmicro\s+\S\s*\S+.*' containedin=ALL
 
 " A %nopp directive with leading space characters or trailing non-space
 " characters is invalid:
-syntax match ecfError '\v^\s+\%nopp.*'
-syntax match ecfError '\v^\%nopp\s*\S+' containedin=ecfNoppBlock
+syntax match ecfError '\v^\s+\%nopp.*' containedin=ALL
+syntax match ecfError '\v^\%nopp\s*\S+.*' containedin=ALL
 
 " An %end directive without a starting directive is invalid:
 syntax match ecfError '\v^\%end.*'
 " Space before an %end directive is invalid:
-syntax match ecfError '\v^\s+\%end.*'  containedin=ecfComment,ecfManual,ecfNoppBlock
+syntax match ecfError '\v^\s+\%end.*'  containedin=ALL
 " Any non-space characters on the same line as an %end directive is
 " invalid:
-syntax match ecfError '\v^\%end\s*\S+' containedin=ecfComment,ecfManual,ecfNoppBlock
+syntax match ecfError '\v^\%end\s*\S+.*' containedin=ALL
 
 highlight link ecfError Error
 
