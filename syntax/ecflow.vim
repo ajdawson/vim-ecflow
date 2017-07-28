@@ -67,12 +67,7 @@ highlight link ecfManual SpecialComment
 " Note:
 "   We don't account for this changing in the highlighting definition,
 "   we just assume "%" is the micro throughout.
-" TODO:
-"   Re-write in a similar style to include.
 " ----------------------------------------------------------------------
-"syntax match ecfMicro '\v^\%ecfmicro +\S'
-"highlight link ecfMicro Macro
-
 syntax match ecfMicro '\v^\%ecfmicro' nextgroup=ecfMicroChar containedin=ALLBUT,@Ecf
 syntax match ecfMicroChar '\v\s+\S' contained
 highlight link ecfMicro Macro
