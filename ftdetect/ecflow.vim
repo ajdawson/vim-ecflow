@@ -7,3 +7,4 @@
 
 au BufRead,BufNewFile *.ecf set filetype=ecflow
 au BufRead,BufNewFile *.sms set filetype=ecflow
+au BufRead,BufNewFile *.def set filetype=ecflow_def
