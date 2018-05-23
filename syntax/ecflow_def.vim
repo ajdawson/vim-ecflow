@@ -1,14 +1,29 @@
 " Vim syntax file
-" Language:	    ecFlow definitions
+" Language:	    ecFlow (and SMS) definitions
 " Maintainer:   Andrew Dawson <andrew.dawson@ecmwf.int>
 " Last Change:  2018-02-19
 " Remark:       Basic syntax for ecFlow definition files.
 
+" ----------------------------------------------------------------------
+" Check for "b:current_syntax". If it is defined, some other syntax file,
+" earlier in 'runtimepath' was already loaded:
+" ----------------------------------------------------------------------
 if version < 600
     syntax clear
 elseif exists("b:current_syntax")
     finish
 endif
+
+" ----------------------------------------------------------------------
+" Include all syntax files for sh before defining extra syntax, this
+" allows support for SMS definitions with IOI and CDP commands as well
+" as ecFlow definitions (can be removed when SMS support is removed):
+" ----------------------------------------------------------------------
+runtime! syntax/tcsh.vim syntax/tcsh/*.vim
+if exists("b:current_syntax")
+    unlet b:current_syntax
+endif
+"-----------------------------------------------------------------------
 
 " Comments
 syntax match ecfDefComment '\v#.*'
@@ -44,5 +59,5 @@ highlight link ecfDefDefstatus Underlined
 " Repeats have a type as well as a name and value
 syntax match ecfDefRepeat '\vrepeat' nextgroup=ecfDefRepeatType skipwhite
 syntax match ecfDefRepeatType '\v(date|day|month|year|integer|enumerated|string)' nextgroup=ecfDefAttributeName skipwhite
-highlight link ecfDefRepeat Operator
-highlight link ecfDefRepeatType Operator
+highlight link ecfDefRepeat Todo
+highlight link ecfDefRepeatType Todo
