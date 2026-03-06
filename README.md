@@ -17,6 +17,7 @@ Probably the easiest way to install is to clone the project into the
 `~/.vim/pack/bundle/start/` directory so it is loaded when Vim starts up
 (assuming Vim version 8 or higher), then run the build script:
 
+    mkdir -p ~/.vim/pack/bundle/start
     cd ~/.vim/pack/bundle/start
     git clone https://github.com/ajdawson/vim-ecflow.git
     cd vim-ecflow
