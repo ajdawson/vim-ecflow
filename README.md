@@ -1,4 +1,4 @@
-# Syntax highlighting for ecFlow scripts
+# Syntax highlighting for ecFlow scripts in Vim
 
 ecFlow scripts are just regular shell scripts with additional pre-processing
 directives available. This syntax highlighting package extends the built-in
@@ -11,19 +11,14 @@ pre-processing directives with ecFlow.
 # Install
 
 You must run the ``./build_syntax`` script to generate the necessary files
-for the package to work. When you do this depends on installation method.
+for the package to work.
 
-If you use [Pathogen](https://github.com/tpope/vim-pathogen) (recommended)
-do this:
+Probably the easiest way to install is to clone the project into the
+`~/.vim/pack/bundle/start/` directory so it is loaded when Vim starts up
+(assuming Vim version 8 or higher), then run the build script:
 
-    cd ~/.vim/bundle
-    git clone ssh://git@software.ecmwf.int:7999/~diad/vim-ecflow.git    
+    cd ~/.vim/pack/bundle/start
+    git clone https://github.com/ajdawson/vim-ecflow.git
     cd vim-ecflow
     ./build_syntax
 
-If you are installing manually then do this:
-
-    git clone ssh://git@software.ecmwf.int:7999/~diad/vim-ecflow.git
-    cd vim-ecflow
-    ./build_syntax
-    rsync -a ftdetect syntax ~/.vim
