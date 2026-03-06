@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Make a copy of the sh.vim syntax from the current Vim installation and
 # modify its syntax identifier names. The modified syntax is used to
@@ -7,8 +7,7 @@
 #
 
 # Get the vim runtime directory:
-VIMRUNTIME=$(vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>" | echo $VIMRUNTIME | quit' \
-                                  | tr -d '\015')
+VIMRUNTIME=$( vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>" | echo $VIMRUNTIME | quit' | tr -d '[:space:]' )
 
 # Make a hacked copy of the sh syntax file, used to embed normal sh syntax within
 # blocks of the extended sh syntax:
