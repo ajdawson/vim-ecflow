@@ -22,3 +22,19 @@ Probably the easiest way to install is to clone the project into the
     cd vim-ecflow
     ./build_syntax
 
+## Neovim
+
+For neovim there are a variety of ways to install. The below works great
+for lazy.vim, and can be adapted for other package managers:
+
+```lua
+require("lazy").setup({
+    {
+        "ajdawson/vim-ecflow",
+        build = function(plugin)
+            vim.fn.system({plugin.dir .. "/build_syntax", "nvim"})
+        end,
+        ft = {"ecflow", "ecflow_def"},
+    },
+})
+```
