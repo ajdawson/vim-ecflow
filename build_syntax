@@ -37,7 +37,8 @@ fi
 
 # Make a hacked copy of the sh syntax file, used to embed normal sh syntax within
 # blocks of the extended sh syntax:
-hack_syntax_file="./syntax/sh-hack.vim"
+base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )
+hack_syntax_file="$base_dir/syntax/sh-hack.vim"
 sed -e 's/sh\([A-Z]\)/shHack\1/g' \
     -e 's/ShFold/ShHackFold/g' \
     "$sh_syntax_file" > "$hack_syntax_file"
