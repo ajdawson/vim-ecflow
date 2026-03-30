@@ -137,4 +137,4 @@ highlight link ecfError Error
 " ----------------------------------------------------------------------
 " Set the name of the current syntax to "ecflow", must be done last:
 " ----------------------------------------------------------------------
-let b:current_sytnax = "ecflow"
+let b:current_syntax = "ecflow"
